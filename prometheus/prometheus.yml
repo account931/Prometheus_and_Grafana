@@ -3,6 +3,11 @@ global:
 
 scrape_configs:
   - job_name: 'prometheus'
+    #auth
+    #scheme: http
+    #basic_auth:
+      #username: username
+      #assword: password
     static_configs:
       #- targets: ['localhost:9090']
       #- targets: ['host.docker.internal:8000']  # If Laravel runs on your host machine. Targets: should only contain the host and port, not the path.

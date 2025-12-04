@@ -8,6 +8,8 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - sail #connect to laravel and prometheus
 
   grafana:
     image: grafana/grafana:latest
@@ -16,7 +18,14 @@ services:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+    networks:
+      - sail #connect to laravel and prometheus
 
 volumes:
   grafana-storage:
+
+#connect to existing network created in Filament 12
+networks:
+  sail:
+    external: true   # because it's created by Laravel Sail already
 
